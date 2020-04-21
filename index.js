@@ -27,8 +27,8 @@ server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
-server.use('/', projectRouter);
-server.use('/', actionModel);
+server.use('/projects', projectRouter);
+server.use('/actions', actionModel);
 
 server.use((err, req, res, next) => {
     console.log(err);

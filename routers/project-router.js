@@ -61,7 +61,7 @@ function validateProjectId() {
 
 function validateProjectData() {
     return (req, res, next) => {
-        if(!req.body.name || !req.body.description) {
+        if(!req.body.name || req.body.description) {
             return res.status(400).json({
                 message: 'Missing required information'
             })
