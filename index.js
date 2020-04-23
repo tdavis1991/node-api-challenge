@@ -12,3 +12,31 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const projectRouter = require('./routers/project-router');
+const actionModel = require('./routers/action-router');
+
+const server = express();
+const port = 4000;
+
+
+server.use(express.json());
+server.use(helmet());
+server.use(cors());
+
+server.use('/projects', projectRouter);
+server.use('/actions', actionModel);
+
+server.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).json({
+        message: 'Something went wrong'
+    })
+})
+
+server.listen(port, () => {
+    console.log(`Listening to http://localhost:${port}`)
+})

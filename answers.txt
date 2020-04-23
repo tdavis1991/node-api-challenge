@@ -1,0 +1,9 @@
+1. Two parts of express i've learned and enjoy to use are routes and middleware. Setting up routes help take out a lot of boilerplates when building a project. Middleware helps in many ways, a few examples could be you become more preductive when coding and it can help secure sensitive information.
+
+2. Middleware can be actions performed inside http request that can alter data, send the dev certain information back upon request etc.
+
+3.
+
+4. To show the client the request was sucessful you could send back a status code in the 200s depending on the request and send a message back telling the request was sucessful.
+
+5. In order to make sub-applications you could break your code down in files and import them to your main file and use server.use and routes to connect them. 
