@@ -7,6 +7,17 @@ router.get('/:id', validateProjectId(), (req, res) => {
     res.status(200).json(req.project);
 })
 
+router.get('/', (req, res, next) => {
+    projectModel.get()
+        .then(projects => {
+            console.log(projects)
+            res.status(200).json(projects)
+        })
+        .catch(err => {
+            next(err)
+        })
+})
+
 router.post('/', validateProjectData(), (req, res) => {
     projectModel.insert(req.body)
         .then(project => {
@@ -61,7 +72,7 @@ function validateProjectId() {
 
 function validateProjectData() {
     return (req, res, next) => {
-        if(!req.body.name || req.body.description) {
+        if(!req.body.name || !req.body.description) {
             return res.status(400).json({
                 message: 'Missing required information'
             })
